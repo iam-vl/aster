@@ -8,6 +8,13 @@ class Player(CircleShape):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
 
+    def checkForCollisions(self, otherCircleShape):
+        distance = self.distance_to(otherCircleShape.position)
+        if distance < self.radius + otherCircleShape.radius: 
+            return True
+        else:
+            return False
+
     def draw(self, screen):
         pygame.draw.polygon(screen, "white", self.triangle(), 2)
 
